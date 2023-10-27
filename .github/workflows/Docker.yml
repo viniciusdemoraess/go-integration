@@ -18,3 +18,10 @@ jobs:
       with:
         username: vinimeso
         password: ${{secrets.PASSWORD_DOCKER_HUB}}
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v5.0.0
+      with:  
+        context: .        
+        file: ./Dockerfile
+        push: true
+        tags: vinimeso/go_ci:${{github.ref_name}}
